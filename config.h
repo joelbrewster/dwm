@@ -13,9 +13,9 @@ static const char urgfgcolor[]	    = "#ffcc9a";
 static const char urgbordercolor[]  = "#ffcc9a";
 
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
-static const unsigned int gappx	    = 14;	/* gap pixel between windows */
+static const unsigned int gappx	    = 14;				/* gap pixel between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const Bool showbar           = False;     /* False means no bar */
+static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
 static const unsigned int systrayspacing = 1;                // space between systray icons
 static const Bool showsystray            = False;             // False means no systray
