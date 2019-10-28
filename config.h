@@ -2,23 +2,35 @@
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
-static const unsigned int gappx     = 12;        /* gap pixel between windows */
-static const unsigned int snap      = 12;       /* snap pixel */
+static const unsigned int gappx     = 8;        /* gap pixel between windows */
+static const unsigned int snap      = 16;       /* snap pixel */
+static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
+static const unsigned int systrayspacing = 2;   /* systray spacing */
+static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
+static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int horizpadbar        = 4;        /* horizontal padding for statusbar */
-static const int vertpadbar         = 4;        /* vertical padding for statusbar */
 static const char *fonts[]          = { "monospace:size=12" };
 static const char dmenufont[]       = "monospace:size=10";
-static const char col_gray1[]       = "#000000";
+static const char col_bg[]          = "#1d2021";
+static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
-static const char col_highlight[]   = "#3498D8";
+static const char col_cyan[]        = "#005577";
+static const char col_blue[]        = "#83a598";
+static const char col_blue2[]       = "#076678";
+static const char col_highlight[]   = "#3498d8";
 static const char *colors[][3]      = {
-                                       /*               fg         bg         border   */
+                                       /*               fg        bg       border   */
+
                                        [SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
                                        [SchemeSel]  = { col_highlight, col_gray1,  col_highlight  },
+                                       // [SchemeNorm] = { col_blue, col_bg,  col_gray2 },
+                                       // [SchemeSel]  = { col_highlight,  col_bg,  col_blue  },
+
+                                       //[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
+                                       //[SchemeSel]  = { col_gray4, col_blue2, col_blue2 },
 };
 
 /* tagging */
@@ -34,16 +46,17 @@ static const Rule rules[] = {
                              /*   { "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 }, */
 };
 
+
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.50; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
 static const Layout layouts[] = {
                                  /* symbol     arrange function */
                                  { "+",      tile },    /* first entry is default */
-                                 { "-",      NULL },    /* no layout function means floating behavior */
                                  { "*",      monocle },
+                                 { "-",      NULL },    /* no layout function means floating behavior */
 };
 
 /* key definitions */
@@ -61,19 +74,18 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_highlight, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "xfce4-terminal", NULL };
-static const char *ffcmd[]  = { "firefox", NULL };
-static const char *emcmd[]  = { "emacs", NULL };
-static const char *thunarcmd[]  = { "thunar", NULL };
+static const char *webbrowsecmd[]  = { "firefox", NULL };
+static const char *editorcmd[]  = { "emacs", NULL };
+static const char *filecmd[]  = { "thunar", NULL };
 static const char *evolutioncmd[]  = { "evolution", NULL };
-
 
 static Key keys[] = {
                      /* modifier                     key        function        argument */
                      { MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
                      { MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-                     { MODKEY|ShiftMask,             XK_f,      spawn,          {.v = ffcmd } },
-                     { MODKEY|ShiftMask,             XK_e,      spawn,          {.v = emcmd } },
-                     { MODKEY|ShiftMask,             XK_t,      spawn,          {.v = thunarcmd } },
+                     { MODKEY|ShiftMask,             XK_w,      spawn,          {.v = webbrowsecmd } },
+                     { MODKEY|ShiftMask,             XK_e,      spawn,          {.v = editorcmd } },
+                     { MODKEY|ShiftMask,             XK_f,      spawn,          {.v = filecmd } },
                      { MODKEY|ShiftMask,             XK_m,      spawn,          {.v = evolutioncmd } },
                      { MODKEY,                       XK_b,      togglebar,      {0} },
                      { MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
