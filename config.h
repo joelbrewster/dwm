@@ -2,9 +2,10 @@
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int gappx     = 24;       /* gaps between windows */
 static const unsigned int snap      = 16;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
-static const unsigned int systrayspacing = 2;   /* systray spacing */
+static const unsigned int systrayspacing = 4;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
@@ -96,6 +97,9 @@ static Key keys[] = {
                      { MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
                      { MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
                      { MODKEY,                       XK_period, focusmon,       {.i = +1 } },
+                     { MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
+                     { MODKEY,                       XK_equal,  setgaps,        {.i = +1 } },
+                     { MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
                      { MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
                      { MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
                      TAGKEYS(                        XK_1,                      0)
