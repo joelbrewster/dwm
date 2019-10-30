@@ -51,8 +51,8 @@ static const Layout layouts[] = {
 
 /* key definitions */
 #define MODKEY Mod4Mask
-#define TAGKEYS(KEY,TAG)                                                \
-  { MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
+#define TAGKEYS(KEY,TAG)                                                      \
+{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 { MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
 { MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
 { MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
@@ -61,22 +61,21 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static char dmenumon[2]           = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[]     = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_background, "-nf", col_foreground, "-sb", col_background, "-sf", col_highlight, NULL };
-static const char *termcmd[]      = { "terminator", NULL };
-static const char *webbrowsecmd[] = { "firefox", NULL };
-static const char *editorcmd[]    = { "emacs", NULL };
-static const char *filecmd[]      = { "thunar", NULL };
-static const char *evolutioncmd[] = { "evolution", NULL };
-static const char *photoscmd[]    = { "shotwell", NULL };
-static const char *passwordscmd[] = { "bitwarden", NULL };
-static const char *lockcmd[]      = { "physlock", NULL };
-static const char *networkcmd[]   = { "nm-connection-editor", NULL };
-static const char *screenshotcmd[]   = { "xfce4-screenshooter", NULL };
+static char dmenumon[2]            = "0"; /* component of dmenucmd, manipulated in spawn() */
+static const char *dmenucmd[]      = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_background, "-nf", col_foreground, "-sb", col_background, "-sf", col_highlight, NULL };
+static const char *termcmd[]       = { "terminator", NULL };
+static const char *webbrowsecmd[]  = { "firefox", NULL };
+static const char *editorcmd[]     = { "emacs", NULL };
+static const char *filecmd[]       = { "thunar", NULL };
+static const char *evolutioncmd[]  = { "evolution", NULL };
+static const char *photoscmd[]     = { "shotwell", NULL };
+static const char *passwordscmd[]  = { "bitwarden", NULL };
+static const char *lockcmd[]       = { "physlock", NULL };
+static const char *networkcmd[]    = { "nm-connection-editor", NULL };
+static const char *screenshotcmd[] = { "xfce4-screenshooter", NULL };
 
 static Key keys[] = {
                      /* modifier                     key        function        argument */
-                     /* { MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } }, */
                      { MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
                      { ControlMask,                  XK_space,  spawn,          {.v = dmenucmd } },
                      { MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
