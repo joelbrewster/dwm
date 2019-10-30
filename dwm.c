@@ -1639,8 +1639,8 @@ run(void)
 
 void
 runAutostart(void) {
-	system("cd ~/.dwm; ./autostart_blocking.sh");
-	system("cd ~/.dwm; ./autostart.sh &");
+ 	system("cd ~/.dwm; ./autostart_blocking.sh");
+ 	system("cd ~/.dwm; ./autostart.sh &"); 
 }
 
 void
@@ -2339,7 +2339,7 @@ void
 updatestatus(void)
 {
 	if (!gettextprop(root, XA_WM_NAME, stext, sizeof(stext)))
-		strcpy(stext, ":)");
+		strcpy(stext, "");
 	drawbar(selmon);
 	updatesystray();
 }
