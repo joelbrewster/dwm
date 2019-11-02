@@ -1,20 +1,21 @@
 /* See LICENSE file for copyright and license details. */
+#include "selfrestart.c"
 
 /* appearance */
-static const unsigned int borderpx  = 3;        /* border pixel of windows */
-static const unsigned int gappx     = 24;       /* gaps between windows */
+static const unsigned int borderpx  = 4;        /* border pixel of windows */
+static const unsigned int gappx     = 20;       /* gaps between windows */
 static const unsigned int snap      = 16;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
-static const unsigned int systrayspacing = 4;   /* systray spacing */
+static const unsigned int systrayspacing = 8;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "SF Mono:size=12" };
-static const char dmenufont[]       = "SF Mono:size=12";
+static const char *fonts[]          = { "SF Mono:size=13" };
+static const char dmenufont[]       = "SF Mono:size=13";
 static const char col_background[]  = "#282c34";
 static const char col_midground[]   = "#3f444a";
-static const char col_foreground[]  = "#abb2bf";
+static const char col_foreground[]  = "#eaebeb";
 static const char col_highlight[]   = "#51afef";
 static const char *colors[][3]      = {
                                        /*               fg              bg              border   */
@@ -63,6 +64,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2]            = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[]      = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_background, "-nf", col_foreground, "-sb", col_background, "-sf", col_highlight, NULL };
+static const char *dmenuexcmd[]      = { "dmenu_extended_run", NULL };
 static const char *termcmd[]       = { "terminator", NULL };
 static const char *webbrowsecmd[]  = { "firefox", NULL };
 static const char *editorcmd[]     = { "emacs", NULL };
@@ -77,7 +79,7 @@ static const char *screenshotcmd[] = { "xfce4-screenshooter", NULL };
 static Key keys[] = {
                      /* modifier                     key        function        argument */
                      { MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-                     { ControlMask,                  XK_space,  spawn,          {.v = dmenucmd } },
+                     { ControlMask,                  XK_space,  spawn,          {.v = dmenuexcmd } },
                      { MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
                      { MODKEY|ShiftMask,             XK_b,      spawn,          {.v = passwordscmd } },
                      { MODKEY|ShiftMask,             XK_e,      spawn,          {.v = editorcmd } },
@@ -121,6 +123,7 @@ static Key keys[] = {
                      TAGKEYS(                        XK_7,                      6)
                      TAGKEYS(                        XK_8,                      7)
                      TAGKEYS(                        XK_9,                      8)
+                     { MODKEY|ShiftMask,             XK_r,      self_restart,   {0} },
                      { MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 };
 
