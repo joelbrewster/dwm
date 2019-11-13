@@ -1524,6 +1524,15 @@ resizeclient(Client *c, int x, int y, int w, int h)
 	c->oldw = c->w; c->w = wc.width = w;
 	c->oldh = c->h; c->h = wc.height = h;
 	wc.border_width = c->bw;
+
+	/* if (((nexttiled(c->mon->clients) == c && !nexttiled(c->next)) */
+	/* 			|| &monocle == c->mon->lt[c->mon->sellt]->arrange) */
+	/* 		&& !c->isfullscreen && !c->isfloating) { */
+	/* 	c->w = wc.width += c->bw * 2; */
+	/* 	c->h = wc.height += c->bw * 2; */
+	/* 	wc.border_width = 0; */
+	/* } */
+
 	XConfigureWindow(dpy, c->win, CWX|CWY|CWWidth|CWHeight|CWBorderWidth, &wc);
 	configure(c);
 	XSync(dpy, False);
@@ -1826,8 +1835,8 @@ setup(void)
 	drw = drw_create(dpy, screen, root, sw, sh);
 	if (!drw_fontset_create(drw, fonts, LENGTH(fonts)))
 		die("no fonts could be loaded.");
-	lrpad = drw->fonts->h;
-	bh = drw->fonts->h + 2;
+	lrpad = drw->fonts->h + horizpadbar;
+	bh = drw->fonts->h + vertpadbar;
 	updategeom();
 	/* init atoms */
 	utf8string = XInternAtom(dpy, "UTF8_STRING", False);
