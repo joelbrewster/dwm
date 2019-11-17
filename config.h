@@ -1,6 +1,5 @@
 /* See LICENSE file for copyright and license details. */
 #include "selfrestart.c"
-#include "layouts.c"
 
 /* appearance */
 static const unsigned int borderpx  = 4;        /* border pixel of windows */
@@ -49,10 +48,10 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
                                  /* symbol     arrange function */
-                                 { "+",      tile },    /* first entry is default */
-                                 { "~",      NULL },    /* no layout function means floating behavior */
-                                 { "=",      monocle },
-                                 { "#",      grid },
+                                 { "T",      tile },    /* first entry is default */
+                                 { "F",      NULL },    /* no layout function means floating behavior */
+                                 { "M",      monocle },
+                                 { "G",      grid },
 };
 
 /* key definitions */
@@ -141,6 +140,7 @@ static Button buttons[] = {
                            { ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
                            { ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
                            { ClkWinTitle,          0,              Button2,        zoom,           {0} },
+                           { ClkWinTitle,          0,              Button1,        view,           {0} },
                            { ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
                            { ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
                            { ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
