@@ -2,7 +2,7 @@
 #include "selfrestart.c"
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 4;        /* border pixel of windows */
 static const unsigned int gappx     = 0;       /* gaps between windows on tiling mode*/
 static const unsigned int snap      = 20;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
@@ -14,7 +14,7 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const int horizpadbar        = 8;        /* horizontal padding for statusbar */
 static const int vertpadbar         = 6;        /* vertical padding for statusbar */
 static const char *fonts[]          = { "monospace:size=12" };
-static const char dmenufont[]       = "monospace:size=12";
+static const char dmenufont[]       = "monospace:size=13";
 static const char col_gray1[]       = "#14161b";
 static const char col_gray2[]       = "#22252c";
 static const char col_gray3[]       = "#bbbbbb";
@@ -22,7 +22,7 @@ static const char col_white[]       = "#ffffff";
 static const char col_blue[]        = "#5294E2";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray1 },
+	[SchemeNorm] = { col_white, col_gray1, col_gray1 },
 	[SchemeSel]  = { col_white, col_blue,  col_blue  },
 };
 
