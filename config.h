@@ -2,8 +2,8 @@
 #include "selfrestart.c"
 
 /* appearance */
-static const unsigned int borderpx  = 4;        /* border pixel of windows */
-static const unsigned int gappx     = 0;       /* gaps between windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int gappx     = 0;       /* gaps between windows on tiling mode*/
 static const unsigned int snap      = 20;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayspacing = 16;  /* systray spacing */
@@ -15,15 +15,15 @@ static const int horizpadbar        = 8;        /* horizontal padding for status
 static const int vertpadbar         = 6;        /* vertical padding for statusbar */
 static const char *fonts[]          = { "monospace:size=12" };
 static const char dmenufont[]       = "monospace:size=12";
-static const char col_gray1[]       = "#1b1d24";
+static const char col_gray1[]       = "#14161b";
 static const char col_gray2[]       = "#22252c";
 static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#efefef";
+static const char col_white[]       = "#ffffff";
 static const char col_blue[]        = "#5294E2";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_blue,  col_blue  },
+	[SchemeNorm] = { col_gray3, col_gray1, col_gray1 },
+	[SchemeSel]  = { col_white, col_blue,  col_blue  },
 };
 
 /* tagging */
@@ -67,7 +67,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_blue, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_blue, "-sf", col_white, NULL };
 static const char *dmenuexcmd[]    = { "dmenu_extended_run", NULL };
 static const char *termcmd[]       = { "alacritty", NULL };
 static const char *webbrowsecmd[]  = { "firefox", NULL };
