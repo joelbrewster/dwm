@@ -11,7 +11,7 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int horizpadbar        = 8;        /* horizontal padding for statusbar */
+static const int horizpadbar        = 6;        /* horizontal padding for statusbar */
 static const int vertpadbar         = 6;        /* vertical padding for statusbar */
 static const char *fonts[]          = { "monospace:size=12" };
 static const char dmenufont[]       = "monospace:size=13";
@@ -49,10 +49,10 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
                                  /* symbol     arrange function */
-                                 { "T",      tile },    /* first entry is default */
-                                 { "F",      NULL },    /* no layout function means floating behavior */
-                                 { "M",      monocle },
-                                 { "G",      grid },
+                                 { "[T]",      tile },    /* first entry is default */
+                                 { "[F]",      NULL },    /* no layout function means floating behavior */
+                                 { "[M]",      monocle },
+                                 { "[G]",      grid },
 };
 
 /* key definitions */
@@ -141,8 +141,6 @@ static Button buttons[] = {
                            /* click                event mask      button          function        argument */
                            { ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
                            { ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
-                           { ClkWinTitle,          0,              Button2,        zoom,           {0} },
-                           { ClkWinTitle,          0,              Button1,        view,           {0} },
                            { ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
                            { ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
                            { ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
