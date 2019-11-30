@@ -1,25 +1,23 @@
-#dwm - dynamic window manager
-I run dwm with Xquartz on Mac OS X. It runs really well but needs a few little tricks to
-get it to work smoothly.
+# dwm - dynamic window manager
+============================
+dwm is an extremely fast, small, and dynamic window manager for X.
+This is my version of it with included patches.
 
-##Running dwm
-- Start a script from ~/.xinitrc
+## Patches (from what I can remember)
+- System tray
+- Systray padding
+- Self restart dwm
+- Useless gaps
+- Menu gaps
+- Remove titles
+- Remove monacle count
+- Set gaps shortcuts
+- Rename tags
+- Grid layout (with gapps)
+- Fibonacci layout (with gapps)
+    - Spiral layout (with gapps)
+    - Dwindle layout (with gapps)
 
 ```
-[[ -f ~/.Xresources ]] && xrdb -load ~/.Xresources
-cd $HOME
-PATH=$PATH:/usr/local/bin
-~/Dropbox/dotfiles/Scripts/dwm-launch
+~/.dwm/autostart.sh
 ```
-
-- Start a script that fills the header and starts dwm
-
-```
-while true; do
-	xsetroot -name "$($HOME/Dropbox/dotfiles/Scripts/weather.sh "PLACE") | $(ioreg -l | grep -i capacity | tr '\n' ' | ' | awk '{printf("%d", $10/$5 * 100)}')% | $(date +'%Y-%m-%d %H:%M')"
-	sleep 1
-done &
-
-exec dwm
-```
-
