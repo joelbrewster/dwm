@@ -11,6 +11,7 @@ This is my version of it with included patches.
 - Menu gaps
 - Remove titles
 - Remove monacle count
+- Fullscreen show window number
 - Set gaps shortcuts
 - Rename tags
 - Grid layout (with gapps)
