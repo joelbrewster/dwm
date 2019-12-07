@@ -31,6 +31,8 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
+#define MAX_TAGNAME_LEN 14
+#define TAG_PREPEND "%1i:"
 #define MAX_TAGLEN 16
 static char tags[][MAX_TAGLEN] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 

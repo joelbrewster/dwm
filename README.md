@@ -10,8 +10,7 @@ This is my version of it with included patches.
 - Useless gaps
 - Menu gaps
 - Remove titles
-- Remove monacle count
-- Fullscreen show window number
+- Monacle window count
 - Set gaps shortcuts
 - Rename tags
 - Grid layout (with gapps)

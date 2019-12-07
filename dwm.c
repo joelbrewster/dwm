@@ -1495,7 +1495,7 @@ nametag(const Arg *arg) {
     fprintf(stderr, "dwm: popen 'dmenu < /dev/null' failed%s%s\n", errno ? ": " : "", errno ? strerror(errno) : "");
     return;
   }
-  if (!(p = fgets(name, MAX_TAGLEN, f)) && (i = errno) && ferror(f))
+  if (!(p = fgets(name, MAX_TAGNAME_LEN, f)) && (i = errno) && ferror(f))
     fprintf(stderr, "dwm: fgets failed: %s\n", strerror(i));
   if (pclose(f) < 0)
     fprintf(stderr, "dwm: pclose failed: %s\n", strerror(errno));
@@ -1505,8 +1505,10 @@ nametag(const Arg *arg) {
     *p = '\0';
 
   for(i = 0; i < LENGTH(tags); i++)
-    if(selmon->tagset[selmon->seltags] & (1 << i))
-      strcpy(tags[i], name);
+	  if(selmon->tagset[selmon->seltags] & (1 << i)) {
+		  sprintf(tags[i], TAG_PREPEND, i+1);
+		  strcat(tags[i], name);
+	}
   drawbars();
 }
 
